@@ -14,7 +14,7 @@
 #' results formatted in accordance with APA6 standards, and human-readable interpretation of results.
 #' @section Assumptions:
 #' \code{moe} assumes a normal distribution by calculating the z-value from \code{qnorm}.
-#' @seealso \link[stats]{qnorm}
+#' @seealso \link[stats]{qnorm()}
 #' @examples
 #' \dontrun{
 #' # Margin of error for party with 30% of voters in a sample of 1,200.
@@ -33,6 +33,7 @@
 #' # Extract confidence interval in APA6 format.
 #' m$apa
 #' }
+#' @export
 moe <- function(proportion, n, conf.level=.95, digits=2, population.correction=FALSE, population.size=NULL) {
   # Failchecks.
   if(proportion < 0 | proportion > 1) { stop("proportion must be a value beteen 0 and 1, such as 0.30 for 30%.") }
