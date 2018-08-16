@@ -38,7 +38,7 @@ moe <- function(proportion, n, conf.level=.95, digits=2, population.correction=F
   # Failchecks.
   if(proportion < 0 | proportion > 1) { stop("proportion must be a value beteen 0 and 1, such as 0.30 for 30%.") }
   if(conf.level < 0 | conf.level > 1) { stop("conf.level must be a value beteen 0 and 1, such as 0.95 for 95%.") }
-  if(population.correction) { if(is.null(population.size)) { stop("If population_correction is TRUE, a population_size must be set.") } }
+  if(population.correction) { if(is.null(population.size)) { stop("If population.correction is TRUE, a population.size must be set.") } }
   if(!is.null(population.size)) { if(population.size < 0) { stop("population.size cannot be negative.") } }
   if(digits < 0) { stop("digits cannot be negative.") }
   if(n < 0) { stop("n cannot be negative.") }
@@ -76,12 +76,12 @@ moe <- function(proportion, n, conf.level=.95, digits=2, population.correction=F
                           round(conf.lower, digits), ", ", round(conf.upper, digits), "]", sep=""),
 
               # Human-readable interpretation.
-              interpretation = paste("A share of ", round(proportion * 100, digits), "% with a sample size of ", format(n, scientific = FALSE),
-                                     " has a ", round(conf.level * 100, 0), "% confidence interval between ",
-                                     round(conf.lower, digits), " and ", round(conf.upper, digits),
-                                     " percentage points, and the margin of error is plus/minus ",
+              interpretation = paste("A share of ", round(proportion * 100, digits), "% with a sample size of ",
+                                     format(n, scientific = FALSE), " has a ", round(conf.level * 100, 0),
+                                     "% confidence interval between ", round(conf.lower, digits), " and ",
+                                     round(conf.upper, digits), " percentage points, and the margin of error is plus/minus ",
                                      round(error, digits), " percentage points.", ifelse(population.correction,
-                                                                                         paste0(" Note that these percentage points are corrected for the population size of ",
-                                                                                                format(population.size, scientific = FALSE), "."), ""), sep="")
+                                            paste0(" Note that these percentage points are corrected for the population size of ",
+                                                   format(population.size, scientific = FALSE), "."), ""), sep="")
   ))
 }
