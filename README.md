@@ -5,6 +5,7 @@ R package **moe** calculates margin of error for simple probability samples.
 ## Install
 
 ```
+install.packages("devtools")
 devtools::install_github("peterdalle/moe")
 library(moe)
 ```
