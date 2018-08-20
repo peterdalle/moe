@@ -2,6 +2,8 @@
 
 R package moe calculates margin of error for simple probability samples.
 
+![Animation of how to use R package moe.](moe-r-package-usage-animation.gif)
+
 ## Install
 
 ```
