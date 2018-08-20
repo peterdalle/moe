@@ -119,6 +119,39 @@ Which outputs:
 [1] 32.59279
 ```
 
+## Compare two proportions
+
+A simple way to do a 2-sample test of proportions (`prop.test`) is to simply extract one moe object from another.
+
+```r
+m1 <- moe(proportion=0.33, n=1200)
+m2 <- moe(proportion=0.37, n=1200)
+
+# Is difference statistically significant?
+m1 - m2
+```
+
+Which outputs:
+
+```
+Note: Using the 95% confidence level from 'm1'.
+
+	2-sample test for equality of proportions with continuity correction
+
+data:  c(proportion1, proportion2) out of c(n1, n2)
+X-squared = 4.0458, df = 1, p-value = 0.04428
+alternative hypothesis: two.sided
+95 percent confidence interval:
+ -0.078964583 -0.001035417
+sample estimates:
+prop 1 prop 2 
+  0.33   0.37 
+```
+
+Thus, we can see that the two proportions differ significantly at the 0.05 alpha level.
+
+The results from the test of proportions can also be saved, `res <- (m1 - m2)`, and then accessed like `res$p.value`.
+
 ## Correct margin of error for large samples
 
 If your sample is large, you can correct for population size using [finite population correction](https://en.wikipedia.org/wiki/Standard_error#Correction_for_finite_population). In essence, the closer the sample size is to the population size, the smaller the margin of error will be. In everyday survey research (where typical n = 1,000 and population size is millions), however, the effect of population correction is trivial.
@@ -166,5 +199,5 @@ The [sampling fraction](https://en.wikipedia.org/wiki/Sampling_fraction) is the 
 
 ## History
 
-- 2018-08-20 Version 0.9.1 Uses S3 class and common generic methods (e.g., `summary`).
+- 2018-08-20 Version 0.9.1 Uses S3 class and common generic methods, e.g. `summary()`.
 - 2018-08-14 Version 0.9.0 First release.
