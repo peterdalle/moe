@@ -1,7 +1,7 @@
 Package: moe
 Type: Package
 Title: Calculate Margin of Error for Simple Probability Samples
-Version: 0.9.0
+Version: 0.9.1
 Authors@R: person("Peter", "Dahlgren", email = "peterdalle@gmail.com",
   role = c("aut", "cre"))
 Description: Calculates margin of error and confidence intervals for
