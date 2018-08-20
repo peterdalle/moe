@@ -116,12 +116,14 @@ moe <- function(proportion, n, conf.level=.95, digits=2, population.correction=F
 
 
 # Check whether object is a "moe" object.
+#' @export
 is.moe <- function(obj) {
   return(class(obj) == "moe")
 }
 
 
 # Print moe object with human-readable interpretation of the margin of error.
+#' @export
 print.moe <- function(obj, digits=NULL) {
   if(!is.moe(obj)) {
     stop("obj must be a 'moe' object.")
@@ -135,6 +137,7 @@ print.moe <- function(obj, digits=NULL) {
 
 
 # Test if two proportions are significant using 2-sample test for equality of proportions (Pearson Chi-squared).
+#' @export
 `-.moe` <- function(obj1, obj2) {
   if(!is.moe(obj1)) { stop("obj1 must be a 'moe' object.") }
   if(!is.moe(obj2)) { stop("obj2 must be a 'moe' object.") }
@@ -156,6 +159,7 @@ print.moe <- function(obj, digits=NULL) {
 
 
 # Inform user that this method is not allowed.
+#' @export
 `+.moe` <- function(obj1, obj2) {
   stop(paste0("The minus operator is not meaningful for moe objects. Please use '", deparse(substitute(obj1)), " - ", deparse(substitute(obj2)), "' instead."))
 }
@@ -168,6 +172,7 @@ cat_wrap <- function(text, width=80, indent="") {
 
 
 # Print all available information from a moe object.
+#' @export
 summary.moe <- function(obj, digits=2, interpretation=TRUE) {
   if(!is.moe(obj)) {
     stop("obj must be a 'moe' object.")
@@ -208,6 +213,7 @@ summary.moe <- function(obj, digits=2, interpretation=TRUE) {
 
 
 # Return character string with APA6 style formatting from moe object.
+#' @export
 as.character.moe <- function(obj, digits=2) {
   if(!is.moe(obj)) {
     stop("obj must be a 'moe' object.")
@@ -220,6 +226,7 @@ as.character.moe <- function(obj, digits=2) {
 
 
 # Return margin of error as a double from moe object.
+#' @export
 as.double.moe <- function(obj) {
   if(!is.moe(obj)) {
     stop("obj must be a 'moe' object.")
@@ -229,6 +236,7 @@ as.double.moe <- function(obj) {
 
 
 # Return margin of error as an integer from moe object.
+#' @export
 as.integer.moe <- function(obj) {
   if(!is.moe(obj)) {
     stop("obj must be a 'moe' object.")
