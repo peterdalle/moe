@@ -121,13 +121,13 @@ Which outputs:
 
 ## Compare two proportions
 
-A simple way to do a 2-sample test of proportions (`prop.test`) is to simply extract one moe object from another.
+A simple way to do a 2-sample test of proportions is to simply subtract one moe object from another.
 
 ```r
 m1 <- moe(proportion=0.33, n=1200)
 m2 <- moe(proportion=0.37, n=1200)
 
-# Is difference statistically significant?
+# Is the difference statistically significant?
 m1 - m2
 ```
 
@@ -147,6 +147,8 @@ sample estimates:
 prop 1 prop 2 
   0.33   0.37 
 ```
+
+This subtraction is equivalent to `prop.test(x = c(0.33*1200, 0.37*1200), n = c(1200, 1200))` which gives identical result.
 
 Thus, we can see that the two proportions differ significantly at the 0.05 alpha level.
 
