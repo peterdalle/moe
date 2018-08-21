@@ -122,7 +122,7 @@ is.moe <- function(obj) {
 }
 
 
-# Print moe object with human-readable interpretation of the margin of error.
+# Print moe object margin of error.
 #' @export
 print.moe <- function(obj, digits=NULL) {
   if(!is.moe(obj)) {
@@ -158,7 +158,7 @@ print.moe <- function(obj, digits=NULL) {
 }
 
 
-# Inform user that this method is not allowed.
+# Inform user that this method is not allowed and suggest other method.
 #' @export
 `+.moe` <- function(obj1, obj2) {
   stop(paste0("The plus operator is not meaningful for moe objects. Please use '", deparse(substitute(obj1)), " - ", deparse(substitute(obj2)), "' instead."))
