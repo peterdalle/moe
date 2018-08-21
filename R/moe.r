@@ -161,7 +161,7 @@ print.moe <- function(obj, digits=NULL) {
 # Inform user that this method is not allowed.
 #' @export
 `+.moe` <- function(obj1, obj2) {
-  stop(paste0("The minus operator is not meaningful for moe objects. Please use '", deparse(substitute(obj1)), " - ", deparse(substitute(obj2)), "' instead."))
+  stop(paste0("The plus operator is not meaningful for moe objects. Please use '", deparse(substitute(obj1)), " - ", deparse(substitute(obj2)), "' instead."))
 }
 
 
