@@ -180,9 +180,9 @@ Parameters
   z-value:                       2.575829 
   APA6 style format:             35.5%, 99% CI [35.04, 35.96] 
 
-Population correction
-
   Note: Margin of error and confidence intervals are corrected for population size.
+
+Population correction
 
   Population size:               N = 300000 
   Sampling fraction:             0.1666667 
