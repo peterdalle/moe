@@ -16,3 +16,5 @@ Depends:
 Imports:
     stats
 RoxygenNote: 6.1.0
+Suggests: 
+    testthat
