@@ -197,8 +197,8 @@ summary.moe <- function(obj, digits=2, interpretation=TRUE) {
   cat(format("  z-value:", justify="left", width=32), obj$z, "\n")
   cat(format("  APA6 style format:", justify="left", width=32), as.character(obj, digits=digits), "\n")
   if(obj$population.corrected) {
-    cat("\nPopulation correction\n\n")
-    cat("  Note: Margin of error and confidence intervals are corrected for population size.\n\n")
+    cat("\n  Note: Margin of error and confidence intervals are corrected for population size.\n\n")
+    cat("Population correction\n\n")
     cat(format("  Population size:", justify="left", width=32), paste0("N = ", format(obj$population.size, scientific = FALSE)), "\n")
     cat(format("  Sampling fraction:", justify="left", width=32), obj$sampling.fraction, "\n")
     cat(format("  Finite population correction:", justify="left", width=32), obj$fpc, "\n")
