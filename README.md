@@ -201,6 +201,57 @@ We also see that the margin of error before correction is 0.5512215 and after co
 
 The [sampling fraction](https://en.wikipedia.org/wiki/Sampling_fraction) is the ratio of sample size to population size, which is about 0.16. The closer the sampling fraction is to 1, the closer the sample size is to the population size.
 
+## Margin of error at different sample sizes
+
+The graph below shows the margin of error at different sample sizes, and for three different proportions (e.g., when a party got 10%, 20% or 50% of the votes).
+
+Note that the closer the votes are to 50% (0.5), the larger the margin of error.
+
+![Margin of error at different sample sizes.](margin-of-error-at-different-sample-sizes.png)
+
+The graph can be reproduced with the code below.
+
+```r
+# Generate all margin of errors for all sample sizes between 1 and 2000.
+library(dplyr)
+library(ggplot2)
+library(moe)
+
+# Sample sizes.
+start.n <- 1      # Start at this sample size.
+stop.n <- 2000    # Stop at this sample size.
+
+# Create a data frame to store the data.
+df <- data.frame(n=0, proportion=0, error=0)
+
+# This may take a minute or two.
+for(p in seq(0, 1, by=.1)) {
+  for(n in seq(start.n, stop.n, by=1)) {
+    df <- rbind(df, data.frame(n=n, proportion=p, error=as.numeric(moe(p, n))))
+  }
+}
+
+# Set as factor to overcome problem of floating-point numbers,
+# such as trying to filter(proportion == 0.3) which doesn't work.
+df$proportion <- as.factor(df$proportion)
+
+# Graph the data with three lines (0.1, 0.2, and 0.5),
+# and restrict the Y-axis (margin of error) to 20%.
+df %>% 
+  filter(proportion %in% c("0.1", "0.2", "0.5")) %>% 
+  filter(error < 20) %>% 
+  ggplot(aes(n, error, color=proportion, linetype=proportion)) +
+    geom_line() +
+    scale_y_continuous(breaks = seq(0, 100, 2), limits = c(0, 20)) +
+    scale_x_continuous(breaks = seq(0, stop.n, 200)) +
+    theme_minimal()
+    labs(title = "Margin of error at different sample sizes",
+         x = "Sample size (n)",
+         y = "Margin of error (%)",
+         color = "Proportion",
+         linetype = "Proportion")
+```
+
 ## History
 
 - 2018-08-20 Version 0.9.1 Uses S3 class and common generic methods, e.g. `summary()`.
