@@ -28,6 +28,13 @@ test_that("moe function using population correction", {
   expect_true(m$population.corrected)
 })
 
+test_that("moe subtraction", {
+  m1 <- moe(proportion=0.33, n=1200)
+  m2 <- moe(proportion=0.37, n=1200)
+  pval <- (m1 - m2)$p.value
+  expect_equal(pval, 0.04428171)
+})
+
 test_that("moe error handling", {
   # Missing parameters.
   expect_error(moe())
