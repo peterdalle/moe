@@ -244,7 +244,7 @@ df %>%
     geom_line() +
     scale_y_continuous(breaks = seq(0, 100, 2), limits = c(0, 20)) +
     scale_x_continuous(breaks = seq(0, stop.n, 200)) +
-    theme_minimal()
+    theme_minimal() +
     labs(title = "Margin of error at different sample sizes",
          x = "Sample size (n)",
          y = "Margin of error (%)",
