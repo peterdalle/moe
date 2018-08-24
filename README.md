@@ -1,6 +1,6 @@
 # moe
 
-R package moe calculates margin of error for simple probability samples.
+R package moe calculates margin of error for [simple probability samples](https://en.wikipedia.org/wiki/Simple_random_sample) and can correct for population size.
 
 ![Animation of how to use R package moe.](moe-r-package-usage-animation.gif)
 
